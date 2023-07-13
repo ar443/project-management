@@ -1,5 +1,5 @@
 #!/bin/bash
-php artisan queue:work &&
+php artisan queue:work &
 php artisan migrate
 php artisan db:seed
 npm run build
