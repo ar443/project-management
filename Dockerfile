@@ -22,7 +22,5 @@ RUN apt-get update -y && \
     composer install && \
     npm install && \
     php artisan key:generate && \
-    rm -rf /var/lib/apt/lists/* && \
-    npm run build
-
-CMD [ "bash", "./run.sh"]
+    rm -rf /var/lib/apt/lists/*
+RUN php artisan migrate

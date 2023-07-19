@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
+    
     /**
      * Bootstrap any application services.
      *
@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        URL::forceScheme('https');
         // Configure application
         $this->configureApp();
 
@@ -70,9 +71,8 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         // Force HTTPS over HTTP
-        if (env('APP_FORCE_HTTPS') ?? false) {
-            URL::forceScheme('https');
-        }
+        // if (env('APP_FORCE_HTTPS') ?? false) {
+            // }
     }
 
     private function configureApp(): void
@@ -86,11 +86,11 @@ class AppServiceProvider extends ServiceProvider
                 'app.logo',
                 $settings->site_logo ? asset('storage/' . $settings->site_logo) : asset('favicon.ico')
             );
-            // Config::set('filament-breezy.enable_registration', $settings->enable_registration ?? false);
-            // Config::set('filament-socialite.registration', $settings->enable_registration ?? false);
-            // Config::set('filament-socialite.enabled', $settings->enable_social_login ?? false);
-            // Config::set('system.login_form.is_enabled', $settings->enable_login_form ?? false);
-            // Config::set('services.oidc.is_enabled', $settings->enable_oidc_login ?? false);
+            Config::set('filament-breezy.enable_registration', $settings->enable_registration ?? false);
+            Config::set('filament-socialite.registration', $settings->enable_registration ?? false);
+            Config::set('filament-socialite.enabled', $settings->enable_social_login ?? false);
+            Config::set('system.login_form.is_enabled', $settings->enable_login_form ?? false);
+            Config::set('services.oidc.is_enabled', $settings->enable_oidc_login ?? false);
         } catch (QueryException $e) {
             // Error: No database configured yet
         }

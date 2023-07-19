@@ -42,7 +42,7 @@ In this example we will use the Keycloak Docker image, but feel free to use anot
 ```env
 OIDC_CLIENT_ID="YOUR_CLIENT_ID"
 OIDC_CLIENT_SECRET="YOUR_CLIENT_SECRET"
-OIDC_DISCOVERY_ENDPOINT=""
+OIDC_DISCOVERY_ENDPOINT="http://localhost:8080"
 OIDC_REDIRECT_URI="${APP_URL}/oidc/callback"
 OIDC_REALM="YOUR_OIDC_REALM"
 OIDC_URL_AUTHORIZE="${OIDC_DISCOVERY_ENDPOINT}/realms/${OIDC_REALM}/protocol/openid-connect/auth"
