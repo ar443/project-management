@@ -23,4 +23,5 @@ RUN apt-get update -y && \
     npm install && \
     php artisan key:generate && \
     rm -rf /var/lib/apt/lists/*
-RUN php artisan migrate
+
+CMD [ "bash", "./run.sh"]
